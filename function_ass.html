@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Programs</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+            width: 80%;
+            box-shadow: 2rem;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        p {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript Programs</h1>
+
+    <!-- 1. Reverse a String -->
+    <div class="container">
+        <h2>1. Reverse a String</h2>
+
+        <input type="text" id="str1" placeholder="Enter a string">
+
+        <br>
+
+        <button onclick="reverseString()">Reverse</button>
+
+        <p id="result1"></p>
+    </div>
+
+    <!-- 2. Check Palindrome -->
+    <div class="container">
+        <h2>2. Check Palindrome</h2>
+
+        <input type="text" id="str2" placeholder="Enter a string">
+
+        <br>
+
+        <button onclick="checkPalindrome()">Check</button>
+
+        <p id="result2"></p>
+    </div>
+
+    <!-- 3. Find Largest Number -->
+    <div class="container">
+        <h2>3. Find the Largest Number</h2>
+
+        <input type="text" id="numbers" placeholder="Enter numbers separated by commas">
+
+        <br>
+
+        <button onclick="findLargest()">Find Largest</button>
+
+        <p id="result3"></p>
+    </div>
+
+    <!-- 4. Remove First Array Element -->
+    <div class="container">
+        <h2>4. Remove the First Array Element</h2>
+
+        <p>Array: [10, 20, 30, 40, 50]</p>
+
+        <button onclick="removeFirst()">Remove First Element</button>
+
+        <p id="result4"></p>
+    </div>
+
+    <script>
+
+        // 1. Reverse a String
+        function reverseString() {
+            let str = document.getElementById("str1").value;
+
+            let reversed = str.split("").reverse().join("");
+
+            document.getElementById("result1").innerHTML =
+                "Reversed String: " + reversed;
+        }
+
+        // 2. Check Palindrome
+        function checkPalindrome() {
+            let str = document.getElementById("str2").value;
+
+            let original = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+            let reversed = original.split("").reverse().join("");
+
+            if (original === reversed && original.length > 0) {
+                document.getElementById("result2").innerHTML =
+                    "It is a Palindrome String";
+            } else {
+                document.getElementById("result2").innerHTML =
+                    "It is not a Palindrome String";
+            }
+        }
+
+        // 3. Find the Largest Number in an Array
+        function findLargest() {
+            let input = document.getElementById("numbers").value.trim();
+
+            if (input === "") {
+                document.getElementById("result3").innerHTML =
+                    "Please enter some numbers.";
+                return;
+            }
+
+            let arr = input.split(",").map(Number);
+
+            if (arr.some(num => !Number.isFinite(num))) {
+                document.getElementById("result3").innerHTML =
+                    "Please enter valid numbers separated by commas.";
+                return;
+            }
+
+            let largest = Math.max(...arr);
+
+            document.getElementById("result3").innerHTML =
+                "Largest Number: " + largest;
+        }
+
+        // 4. Remove the First Element from an Array
+        function removeFirst() {
+            let arr = [10, 20, 30, 40, 50];
+
+            arr.shift();
+
+            document.getElementById("result4").innerHTML =
+                "Updated Array: [" + arr.join(", ") + "]";
+        }
+
+    </script>
+
+</body>
+
+</html>
